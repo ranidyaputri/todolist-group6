@@ -1,20 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
 
-import { useEffect, useState } from "react"
+import { Component, useEffect, useState } from "react"
 import axios from "axios";
 
 import TodoList from './components/TodoList';
 
 const baseURL = "https://todo-basic-api.up.railway.app/";
 
-function App() {
+function App(){
   const [todo, setTodo] = useState(null);
   const [isTodoNull, setIsTodoNull] = useState(false);
 
   const [data, setData] = useState({});
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     const response = await fetch(baseURL + 'todos/todo', {
       method: 'POST',
@@ -26,6 +27,20 @@ function App() {
     const result = await response.json();
     console.log(result);
   }
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(baseURL + 'todos/todo',  data)
+  //     .then((response) => {
+  //       console.log(response);
+  //       setTodo(response.data);
+  //     });
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
 
   useEffect(() => {
@@ -56,7 +71,7 @@ function App() {
                 <input 
                   type="text" 
                   id="input" 
-                  className="bg-white rounded-lg h-[40px] min-w-[220px] md:w-[400px] focus:ring-primary-400 p-2" autocomplete="off" placeholder="Type your list..." 
+                  className="bg-white rounded-lg h-[40px] min-w-[220px] md:w-[400px] focus:ring-primary-400 p-2" autocomplete="off" placeholder="Add new list..." 
                   onChange={e => setData({...data, description: e.target.value})}
                   />
               </div>

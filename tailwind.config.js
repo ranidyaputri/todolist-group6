@@ -10,6 +10,7 @@ module.exports = {
       'primary-700': '#2B3C9C',
       'white' : '#F5F5FA',
       'gray': '#efefef',
+      'black-400': '#898989',
       'black': '#2e2e2e',
     },
     extend: {
